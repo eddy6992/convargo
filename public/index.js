@@ -145,6 +145,23 @@ const actors = [{
   }]
 }];
 
+//find a way to create a link betwenne a truc and the delivery 
+//create the delivery way 
+
+
+/*
 console.log(truckers);
-console.log(deliveries);
+//console.log(deliveries);
 console.log(actors);
+
+*/
+
+for (var count = 0; count< deliveries.length ; count++)
+{
+  var Camion = truckers.find(function(recup) 
+    {return recup.id == deliveries[count].truckerId ;});
+  deliveries[count].price= Camion.pricePerKm * deliveries[count].distance + 
+  Camion.pricePerVolume * deliveries[count].volume;
+} 
+
+console.log(deliveries);
