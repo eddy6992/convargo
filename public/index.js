@@ -162,6 +162,23 @@ for (var count = 0; count< deliveries.length ; count++)
     {return recup.id == deliveries[count].truckerId ;});
   deliveries[count].price= Camion.pricePerKm * deliveries[count].distance + 
   Camion.pricePerVolume * deliveries[count].volume;
+
+  if (deliveries[count].volume > 5 )
+  {
+    deliveries[count].price = deliveries[count].price * (1-0.1) 
+  }
+
+   if (deliveries[count].volume > 10 )
+  {
+    deliveries[count].price = deliveries[count].price * (1-0.3) 
+  }
+
+   if (deliveries[count].volume > 25 )
+  {
+   deliveries[count].price = deliveries[count].price * (1-0.5) 
+}
 } 
+
+
 
 console.log(deliveries);
