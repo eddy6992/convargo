@@ -162,23 +162,38 @@ for (var count = 0; count< deliveries.length ; count++)
     {return recup.id == deliveries[count].truckerId ;});
   deliveries[count].price= Camion.pricePerKm * deliveries[count].distance + 
   Camion.pricePerVolume * deliveries[count].volume;
-
+//add the pourcentage of the volume 
   if (deliveries[count].volume > 5 )
   {
-    deliveries[count].price = deliveries[count].price * (1-0.1) 
+    deliveries[count].price = deliveries[count].price * (deliveries[count].price -0.1) 
   }
 
    if (deliveries[count].volume > 10 )
   {
-    deliveries[count].price = deliveries[count].price * (1-0.3) 
+    deliveries[count].price = deliveries[count].price * (deliveries[count].price-0.3) 
   }
 
    if (deliveries[count].volume > 25 )
   {
-   deliveries[count].price = deliveries[count].price * (1-0.5) 
+   deliveries[count].price = deliveries[count].price * (deliveries[count].price-0.5) 
 }
 } 
 
+for (var i = 0; i< deliveries.length ; i++)
+{
 
+var newDelivery = deliveries.find(function(action) 
+    {return action.id == deliveries[i].deliveryId ;})
 
+  var distanceX = 500;
+  var commiss = 0.3 * deliveries[i].price;
+
+  deliveries[i].commission.insurance = (0.3 * deliveries[i].price)*1/2;
+
+ 
+  deliveries[i].commission.treasury = deliveries[i].distance/distanceX;
+  //convergo wil receive the rest
+  deliveries[i].commission.convargo = (deliveries[i].commission.insurance)-(deliveries[i].commission.treasury);
+
+}
 console.log(deliveries);
