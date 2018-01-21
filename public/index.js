@@ -194,6 +194,16 @@ var newDelivery = deliveries.find(function(action)
   deliveries[i].commission.treasury = deliveries[i].distance/distanceX;
   //convergo wil receive the rest
   deliveries[i].commission.convargo = (deliveries[i].commission.insurance)-(deliveries[i].commission.treasury);
+ //the famous deductible
+ if (deliveries[i].options.deductibleReduction)
 
+  { deliveries[i].options.deductibleReductionPrice = deliveries[i].volume * 1; }
 }
+
+for (var j = 0; j<deliveries.length ; j++)
+
+{
+  //etape 4/5
+}
+
 console.log(deliveries);
