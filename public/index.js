@@ -203,7 +203,7 @@ var newDelivery = deliveries.find(function(action)
 for (var j = 0; j<deliveries.length ; j++)
 
 {
-  //etape 4/5
+  //etape 5
 }
 
 console.log(deliveries);
